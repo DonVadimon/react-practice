@@ -1,0 +1,143 @@
+.carousel {
+  position   : relative;
+  overflow   : hidden;
+  color      : #fff;
+  text-shadow: 2px 2px 2px #000;
+}
+
+@media screen and (min-width: 1900px) {
+  .carousel {
+    font-size: 2em;
+  }
+}
+
+.carousel-slide {
+  height         : 100vh;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  background     : #fff center center;
+  background-size: cover;
+}
+
+.invisible-btn {
+  visibility: hidden;
+  margin    : 0;
+  padding   : 0;
+  border    : 0;
+}
+
+.carousel-control {
+  visibility : visible;
+  position   : absolute;
+  top        : 50%;
+  height     : 32px;
+  cursor     : pointer;
+  user-select: none;
+  z-index    : 10;
+}
+
+
+@media screen and (min-width: 1900px) {
+  .carousel-control {
+    height: 64px;
+  }
+}
+
+.next-slide {
+  right: 32px;
+}
+
+.prev-slide {
+  left: 32px;
+}
+
+@keyframes fadeOne {
+  0% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeTwo {
+  0% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* kastil starts */
+
+.carousel-slide[animation="1"] {
+  animation: fadeOne 0.9s normal;
+}
+
+.carousel-slide[animation="0"] {
+  animation: fadeTwo 0.9s normal;
+}
+
+/* kastil ends */
+
+.slide-info {
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius   : 4px;
+  display         : flex;
+  padding         : 20px;
+  font-size       : 1.2em;
+  max-width       : 40%;
+  transition      : 250ms;
+}
+
+.slide-info:hover {
+  background-color: rgba(122, 122, 122, 0.8);
+}
+
+.episode-main-info {
+  margin-right: 2em;
+  font-weight : 700;
+}
+
+@media (max-width: 768px) {
+  .slide-info {
+    flex-direction: column;
+    align-items   : center;
+    text-align    : center;
+  }
+
+  .slide-info h2 {
+    margin-bottom: 1em;
+  }
+
+  .episode-main-info {
+    margin-right: 0px;
+  }
+}
+
+.episode-main-info h2 {
+  display       : flex;
+  flex-direction: column;
+  align-items   : center;
+  font-size     : 1.7em;
+  border-bottom : 1px solid #fff;
+  padding-bottom: 0.2em;
+  text-align    : center;
+}
+
+.episode-main-info h3 {
+  font-size: 1.5em;
+}
+
+.character-list ul {
+  padding: 0;
+}
+
+.character-list li {
+  list-style : none;
+  font-weight: 700;
+}

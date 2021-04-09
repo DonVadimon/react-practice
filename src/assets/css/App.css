@@ -1,0 +1,92 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height        : 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 2s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height      : 100vh;
+  display         : flex;
+  flex-direction  : column;
+  align-items     : center;
+  justify-content : center;
+  font-size       : calc(10px + 2vmin);
+  color           : white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.task-links-container {
+  width          : 100%;
+  display        : flex;
+  justify-content: center;
+  margin         : 1em 0;
+}
+
+.task-link {
+  background   : rgb(32, 132, 136);
+  font-size    : 1em;
+  padding      : 0.5em;
+  color        : white;
+  border       : 2px rgb(32, 132, 136) solid;
+  border-radius: 6px;
+  margin       : 0 0.5em;
+}
+
+.task-link:hover {
+  background: none;
+}
+
+.back-button-container {
+  display        : flex;
+  justify-content: center;
+  margin-bottom  : 1em;
+}
+
+.back-button {
+  display      : block;
+  background   : rgb(32, 132, 136);
+  font-size    : 1em;
+  padding      : 0.5em;
+  color        : white;
+  border       : 2px rgb(32, 132, 136) solid;
+  border-radius: 6px;
+  margin       : 0 auto;
+}
+
+.back-button:hover {
+  background: rgb(41, 172, 177);
+}
+
+
+@media screen and (min-width: 1900px) {
+  .back-button {
+    font-size: 2em;
+  }
+}
