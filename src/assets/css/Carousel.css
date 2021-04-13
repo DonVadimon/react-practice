@@ -74,11 +74,11 @@
 
 /* kastil starts */
 
-.carousel-slide[animation="1"] {
+.carousel-slide[data-animation="1"] {
   animation: fadeOne 0.9s normal;
 }
 
-.carousel-slide[animation="0"] {
+.carousel-slide[data-animation="0"] {
   animation: fadeTwo 0.9s normal;
 }
 
