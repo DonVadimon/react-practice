@@ -1,20 +1,31 @@
 import React, { useState, useEffect } from "react";
+import { useAppSelector, useAppDispatch } from "../../Redux/hooks";
+import { prevSlide, nextSlide } from "../../Redux/breakingBadSlice";
+import {
+  selectEpisodeByIndex,
+  selectImageByIndex,
+} from "../../Redux/selectors";
 import NextSlide from "./NextSlide";
 import PrevSlide from "./PrevSlide";
 import "../../assets/css/Carousel.css";
-import { ICarouselSlideProps } from "./interfaces";
 
-const CarouselSlide: React.FC<ICarouselSlideProps> = ({
-  image,
-  episode,
-  prevSlide,
-  nextSlide,
-}: ICarouselSlideProps) => {
+const CarouselSlide: React.FC = () => {
   const [toggle, setToggle] = useState<boolean>(false);
   const [animation, setAnimation] = useState<number>(0);
+  const currentImg = useAppSelector((state) => state.breakingBad.currentImg);
+  const image = useAppSelector((state) =>
+    selectImageByIndex(state, currentImg)
+  );
+  const currentEpisode = useAppSelector(
+    (state) => state.breakingBad.currentEpisode
+  );
+  const episode = useAppSelector((state) =>
+    selectEpisodeByIndex(state, currentEpisode)
+  );
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const renderAnimation = () => (toggle ? setAnimation(1) : setAnimation(0));
+    const renderAnimation = () => setAnimation(toggle ? 1 : 0);
     renderAnimation();
   }, [toggle]);
 
@@ -24,12 +35,12 @@ const CarouselSlide: React.FC<ICarouselSlideProps> = ({
 
   const handleRightArrowClick = () => {
     startStopAnimation();
-    nextSlide();
+    dispatch(nextSlide());
   };
 
   const handleLeftArrowClick = () => {
     startStopAnimation();
-    prevSlide();
+    dispatch(prevSlide());
   };
 
   return (
