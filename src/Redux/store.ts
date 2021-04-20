@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import breakingBadReducer from "./breakingBadSlice";
 import loaderReducrer from "./loaderSlice";
-import pagesReducer from "./pagesSlice";
+import searchReducer from "./searchSlice";
 
 export const store = configureStore({
   reducer: {
     loader: loaderReducrer,
     breakingBad: breakingBadReducer,
-    page: pagesReducer,
+    searchGitUsers: searchReducer,
   },
 });
 

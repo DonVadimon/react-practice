@@ -1,14 +1,17 @@
 import React from "react";
+import { withRouter, useHistory } from "react-router-dom";
 import { useAppDispatch } from "../Redux/hooks";
 import { loading } from "../Redux/loaderSlice";
-import { mainPage } from "../Redux/pagesSlice";
 
 const BackButton: React.FC = () => {
   const dispatch = useAppDispatch();
+  const history = useHistory();
+
   const handleClick = () => {
-    dispatch(mainPage());
     dispatch(loading());
+    history.push("/");
   };
+
   return (
     <div className="back-button-container">
       <button type="button" onClick={handleClick} className="back-button">
@@ -18,4 +21,4 @@ const BackButton: React.FC = () => {
   );
 };
 
-export default BackButton;
+export default withRouter(BackButton);
