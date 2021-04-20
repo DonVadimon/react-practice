@@ -1,10 +1,13 @@
 import React from "react";
-import { IHandleParentProps } from "./interfaces";
+import { useAppDispatch } from "../Redux/hooks";
+import { setPage } from "../Redux/pagesSlice";
 import links from "./taskLinks";
 
-const TaskLinks: React.FC<IHandleParentProps> = (props: IHandleParentProps) => {
+const TaskLinks: React.FC = () => {
+  const dispatch = useAppDispatch();
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    props.handleParent(+event.currentTarget.id);
+    dispatch(setPage(+event.currentTarget.id));
   };
 
   return (

@@ -1,11 +1,13 @@
 import React from "react";
-import { IHandleParentProps } from "./interfaces";
+import { useAppDispatch } from "../Redux/hooks";
+import { loading } from "../Redux/loaderSlice";
+import { mainPage } from "../Redux/pagesSlice";
 
-const BackButton: React.FC<IHandleParentProps> = (
-  props: IHandleParentProps
-) => {
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    props.handleParent(+event.currentTarget.id);
+const BackButton: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const handleClick = () => {
+    dispatch(mainPage());
+    dispatch(loading());
   };
   return (
     <div className="back-button-container">
