@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { withRouter } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../Redux/hooks";
 import { fetchGitUsers } from "../../Redux/searchSlice";
@@ -16,13 +16,13 @@ const SearchResult: React.FC = () => {
     (state) => state.searchGitUsers
   );
 
-  const nextPage = () => {
+  const nextPage = useCallback(() => {
     setPageNum((prev) => prev + 1);
-  };
+  }, []);
 
-  const prevPage = () => {
+  const prevPage = useCallback(() => {
     setPageNum((prev) => prev - 1);
-  };
+  }, []);
 
   const setPage = (num: number) => {
     setPageNum(num);
@@ -30,8 +30,7 @@ const SearchResult: React.FC = () => {
 
   useEffect(() => {
     dispatch(fetchGitUsers({ query, pageNum }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch, pageNum, query]);
 
   if (
     users.length === 0 &&

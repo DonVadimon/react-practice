@@ -11,12 +11,15 @@ const PagesControls: React.FC<IPagesControlsProps> = ({
   pageNum,
 }: IPagesControlsProps) => {
   const pageLinks = useAppSelector((state) => state.searchGitUsers.pageLinks);
-  const pagesCount =
-    pageLinks
-      .find(({ relation }) => relation === "last")
-      ?.link.match(/\?page=\d+/g)
-      ?.pop()
-      ?.replace(/\?page=/g, "") ?? 1;
+  const pagesCount = useMemo(
+    () =>
+      pageLinks
+        .find(({ relation }) => relation === "last")
+        ?.link.match(/\?page=\d+/g)
+        ?.pop()
+        ?.replace(/\?page=/g, "") ?? 1,
+    [pageLinks]
+  );
   const dispatch = useAppDispatch();
 
   const pageButtons: IPageBtn[] = useMemo(

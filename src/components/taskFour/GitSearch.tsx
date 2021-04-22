@@ -3,12 +3,12 @@ import { Switch, Route, withRouter, useRouteMatch } from "react-router-dom";
 import SearchPage from "./SearchPage";
 import SearchResult from "./SearchResult";
 import BackButton from "../BackButton";
-import "../../assets/css/GitSearch/GitSearch.css";
 import GitUserPage from "./GitUserPage";
+import removeEndSlashIfContains from "./removeEndSlashIfContains";
+import "../../assets/css/GitSearch/GitSearch.css";
 
 export const GitSearch: React.FC = () => {
-  let { path } = useRouteMatch();
-  path = path.charAt(path.length - 1) === "/" ? path.slice(0, -1) : path;
+  const path = removeEndSlashIfContains(useRouteMatch().path);
   return (
     <>
       <div className="search-main-container">

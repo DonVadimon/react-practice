@@ -87,7 +87,7 @@ const GitUserPage: React.FC = () => {
             )
           )}
         </div>
-        {repos.length > 10 ? <ViewGitHubBtn url={user.html_url} /> : <></>}
+        <ViewGitHubBtn url={user.html_url} />
       </div>
     </div>
   );
