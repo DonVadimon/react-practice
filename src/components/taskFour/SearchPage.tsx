@@ -11,7 +11,9 @@ import SearchLoader from "./SearchLoader";
 import "../../assets/css/GitSearch/SearchPage.css";
 
 const SearchPage: React.FC = () => {
-  const [query, setQuery] = useState<string>("");
+  const [query, setQuery] = useState<string>(
+    localStorage.getItem("gitsearch/querystring") || ""
+  );
   const { users, status } = useAppSelector((state) => state.searchGitUsers);
   const dispatch = useAppDispatch();
   const history = useHistory();
@@ -28,6 +30,7 @@ const SearchPage: React.FC = () => {
   }, [query]);
 
   const handleSearch = () => {
+    localStorage.setItem("gitsearch/querystring", query);
     dispatch(setStoreQuery(query));
     history.push(`${url}/result`);
   };
