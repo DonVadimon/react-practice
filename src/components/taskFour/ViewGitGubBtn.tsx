@@ -1,9 +1,6 @@
 import React from "react";
 import "../../assets/css/GitSearch/ViewGitHubBtn.css";
-
-interface IViewGitHubBtnProps {
-  url: string;
-}
+import { IViewGitHubBtnProps } from "./interfaces";
 
 const ViewGitHubBtn: React.FC<IViewGitHubBtnProps> = ({
   url,

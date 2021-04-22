@@ -6,7 +6,7 @@ import { useAppSelector, useAppDispatch } from "../../Redux/hooks";
 import { fetchUserData } from "../../Redux/gitUserSlice";
 import fetchStatuses from "../../Redux/fetchStatuses";
 import SearchLoader from "./SearchLoader";
-import { ISearchResultCardRepo } from "./interfaces";
+import { ISearchResultCardRepo, IURLParams } from "./interfaces";
 import SearchResultCardRepoCard from "./SearchResultCardRepoCard";
 import socialLink from "../../assets/icons/social-link.svg";
 import mapPointer from "../../assets/icons/geo-pointer.svg";
@@ -15,10 +15,6 @@ import circle from "../../assets/icons/circle-fill.svg";
 import "../../assets/css/GitSearch/GitUserPage.css";
 import UserNotFoundMsg from "./UserNotFoundMsg";
 import ViewGitHubBtn from "./ViewGitGubBtn";
-
-interface IURLParams {
-  login: string;
-}
 
 const GitUserPage: React.FC = () => {
   const { login } = useParams<IURLParams>();

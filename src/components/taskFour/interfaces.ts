@@ -35,3 +35,11 @@ export interface IPageBtn {
   position: number;
   btn: JSX.Element;
 }
+
+export interface IViewGitHubBtnProps {
+  url: string;
+}
+
+export interface IURLParams {
+  login: string;
+}
