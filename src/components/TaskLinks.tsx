@@ -5,13 +5,8 @@ import links from "./taskLinks";
 const TaskLinks: React.FC = () => (
   <div className="task-links-container">
     {links.map((link) => (
-      <Link to={link.href}>
-        <button
-          type="button"
-          key={link.id}
-          id={link.id.toString()}
-          className="task-link"
-        >
+      <Link to={link.href} key={link.id}>
+        <button type="button" id={link.id.toString()} className="task-link">
           {link.text}
         </button>
       </Link>

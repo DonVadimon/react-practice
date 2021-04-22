@@ -29,6 +29,7 @@ const PagesControls: React.FC<IPagesControlsProps> = ({
               btn: (
                 <button
                   type="button"
+                  key={1}
                   onClick={() => {
                     dispatch(fetchGitUsersByURL(link));
                     prevPage();
@@ -44,6 +45,7 @@ const PagesControls: React.FC<IPagesControlsProps> = ({
               btn: (
                 <button
                   type="button"
+                  key={3}
                   onClick={() => {
                     dispatch(fetchGitUsersByURL(link));
                     nextPage();
@@ -59,6 +61,7 @@ const PagesControls: React.FC<IPagesControlsProps> = ({
               btn: (
                 <button
                   type="button"
+                  key={4}
                   onClick={() => {
                     dispatch(fetchGitUsersByURL(link));
                     setPage(+pagesCount);
@@ -74,6 +77,7 @@ const PagesControls: React.FC<IPagesControlsProps> = ({
               btn: (
                 <button
                   type="button"
+                  key={0}
                   onClick={() => {
                     dispatch(fetchGitUsersByURL(link));
                     setPage(1);
@@ -96,7 +100,12 @@ const PagesControls: React.FC<IPagesControlsProps> = ({
   const currentPageButton: { position: number; btn: JSX.Element } = {
     position: 2,
     btn: (
-      <button type="button" disabled>
+      <button
+        type="button"
+        key={2}
+        disabled
+        className={pageButtons.length === 0 ? "b-r-4px" : ""}
+      >
         {pageNum}
       </button>
     ),
@@ -104,9 +113,13 @@ const PagesControls: React.FC<IPagesControlsProps> = ({
 
   return (
     <div className="pages-controls">
-      {[...pageButtons, currentPageButton]
-        .sort((a, b) => a.position - b.position)
-        .map((el) => el.btn)}
+      {pageButtons.length !== 0 ? (
+        [...pageButtons, currentPageButton]
+          .sort((a, b) => a.position - b.position)
+          .map((el) => el.btn)
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
