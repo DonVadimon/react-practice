@@ -30,7 +30,7 @@ const GitUserPage: React.FC = () => {
     if (!("message" in user)) {
       fetch(user.repos_url)
         .then((response: Response) => response.json())
-        .then((data) => setRepos(data));
+        .then((data) => setRepos(Array.isArray(data) ? data : []));
     }
   }, [user]);
 
@@ -77,14 +77,18 @@ const GitUserPage: React.FC = () => {
       </div>
       <div className="right-side-wrapper">
         <div className="repos-container">
-          {repos.map((repo, idx) =>
-            idx < 10 ? (
-              <div className="repo-wrapper">
-                <SearchResultCardRepoCard repo={repo} />
-              </div>
-            ) : (
-              <></>
+          {repos.length !== 0 ? (
+            repos.map((repo, idx) =>
+              idx < 10 ? (
+                <div className="repo-wrapper">
+                  <SearchResultCardRepoCard repo={repo} />
+                </div>
+              ) : (
+                <></>
+              )
             )
+          ) : (
+            <></>
           )}
         </div>
         <ViewGitHubBtn url={user.html_url} />

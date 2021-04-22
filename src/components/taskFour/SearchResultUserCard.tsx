@@ -16,7 +16,9 @@ const SearchResultUserCard: React.FC<ISearchResultUserCardProps> = React.memo(
     useEffect(() => {
       fetch(user.repos_url)
         .then((data: Response) => data.json())
-        .then((data: ISearchResultCardRepo[]) => setRepos(data ?? []))
+        .then((data: ISearchResultCardRepo[]) =>
+          setRepos(Array.isArray(data) ? data : [])
+        )
         .catch(() => {
           setRepos([]);
         });
