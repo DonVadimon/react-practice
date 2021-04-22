@@ -12,7 +12,7 @@ import "../../assets/css/GitSearch/SearchPage.css";
 
 const SearchPage: React.FC = () => {
   const [query, setQuery] = useState<string>(
-    localStorage.getItem("gitsearch/querystring") || ""
+    useAppSelector((state) => state.searchGitUsers.query)
   );
   const { users, status } = useAppSelector((state) => state.searchGitUsers);
   const dispatch = useAppDispatch();

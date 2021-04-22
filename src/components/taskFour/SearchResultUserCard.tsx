@@ -25,17 +25,14 @@ const SearchResultUserCard: React.FC<ISearchResultUserCardProps> = ({
 
   return (
     <div className="search-result-user-card">
-      <div
-        className="search-result-repo-owner-avatar"
-        style={repos.length === 0 ? { flexGrow: 1 } : {}}
-      >
+      <div className="search-result-repo-owner-avatar">
         <Link to={`${url}/${user.login}`}>
           <img src={user.avatar_url} alt={user.login} />
         </Link>
       </div>
       <div
         className="search-result-repo-card-content"
-        style={repos.length === 0 ? { flexGrow: 2 } : {}}
+        style={repos.length < 3 ? { width: "950px" } : {}}
       >
         <div className="search-result-repo-card-owner-login">
           <Link to={`${url}/${user.login}`}>

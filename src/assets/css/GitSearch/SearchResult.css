@@ -9,8 +9,10 @@
 }
 
 .search-result-cards-container {
-  display       : flex;
-  flex-direction: column;
+  display        : flex;
+  justify-content: flex-start;
+  align-items    : center;
+  flex-direction : column;
 }
 
 .search-result-header {

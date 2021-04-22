@@ -11,7 +11,7 @@ import fetchStatuses from "./fetchStatuses";
 import authHeaders from "./authHeaders";
 
 const initialState: IGitSearchFormState = {
-  query: "",
+  query: localStorage.getItem("gitsearch/querystring") || "",
   users: [],
   status: fetchStatuses.idle,
   error: null,

@@ -18,12 +18,31 @@
   }
 }
 
+@media screen and (min-width: 1700px) {
+  .search-result-user-card {
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .search-result-user-card {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 2300px) {
+  .search-result-user-card {
+    width: 60%;
+  }
+}
+
 .search-result-repo-owner-avatar {
   box-sizing     : border-box;
-  flex-grow      : 2;
   display        : flex;
   justify-content: center;
   align-items    : center;
+  flex-grow      : 1;
+  margin         : 0.5em;
 }
 
 .search-result-repo-owner-avatar img {
@@ -41,7 +60,7 @@
 
 @media screen and (max-width: 1230px) {
   .search-result-repo-card-content {
-    width: 90%;
+    width: 90% !important;
   }
 }
 
