@@ -2,32 +2,35 @@ import React, { useState, useEffect } from "react";
 import { useHistory, withRouter, useRouteMatch } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../Redux/hooks";
 import fetchStatuses from "../../Redux/fetchStatuses";
-import { fetchGitUsers } from "../../Redux/searchSlice";
+import {
+  setQuery as setStoreQuery,
+  fetchGitUsers,
+} from "../../Redux/searchSlice";
 import SearchSuggestion from "./SearchSuggestion";
 import SearchLoader from "./SearchLoader";
 import "../../assets/css/GitSearch/SearchPage.css";
 
 const SearchPage: React.FC = () => {
   const [query, setQuery] = useState<string>("");
-  const fetchUsersStatus = useAppSelector(
-    (state) => state.searchGitUsers.status
-  );
-  const usersSuggestions = useAppSelector(
-    (state) => state.searchGitUsers.users
-  );
+  const { users, status } = useAppSelector((state) => state.searchGitUsers);
   const dispatch = useAppDispatch();
   const history = useHistory();
   const { url } = useRouteMatch();
 
   useEffect(() => {
     if (
-      (query.trim().length > 0 && fetchUsersStatus === fetchStatuses.idle) ||
-      fetchUsersStatus === fetchStatuses.succeeded
+      (query.trim().length > 0 && status === fetchStatuses.idle) ||
+      status === fetchStatuses.succeeded
     ) {
-      dispatch(fetchGitUsers(query));
+      dispatch(fetchGitUsers({ query }));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
+
+  const handleSearch = () => {
+    dispatch(setStoreQuery(query));
+    history.push(`${url}/result`);
+  };
 
   return (
     <div className="search-form">
@@ -39,22 +42,23 @@ const SearchPage: React.FC = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className="search-input"
+          onKeyPress={(e) => {
+            if (e.key.toLowerCase() === "enter") {
+              handleSearch();
+            }
+          }}
         />
         <button
           type="button"
           className="search-btn"
-          onClick={(e) => {
-            e.preventDefault();
-            history.push(`${url}/result`);
-          }}
+          onClick={() => handleSearch()}
         >
           Search
         </button>
       </div>
-      {fetchUsersStatus === fetchStatuses.succeeded &&
-      query.trim().length > 0 ? (
+      {status === fetchStatuses.succeeded && query.trim().length > 0 ? (
         <div className="suggestions-list">
-          {usersSuggestions.map((user) => (
+          {users.map((user) => (
             <SearchSuggestion key={user.id} user={user} />
           ))}
         </div>

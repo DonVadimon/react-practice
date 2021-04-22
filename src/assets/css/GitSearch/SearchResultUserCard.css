@@ -1,0 +1,72 @@
+@import "./variables.css";
+
+.search-result-user-card {
+  width          : 100%;
+  display        : flex;
+  justify-content: space-between;
+  align-items    : center;
+  box-sizing     : border-box;
+  border         : 1px solid var(--minor-elems-color);
+  border-radius  : 8px;
+  margin-bottom  : 1em;
+}
+
+@media screen and (max-width: 1400px) {
+  .search-result-user-card {
+    flex-direction: column;
+    padding-top   : 0.5em;
+  }
+}
+
+.search-result-repo-owner-avatar {
+  box-sizing     : border-box;
+  flex-grow      : 2;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+}
+
+.search-result-repo-owner-avatar img {
+  display      : block;
+  height       : 120px;
+  border-radius: 50%;
+}
+
+.search-result-repo-card-content {
+  display        : flex;
+  flex-direction : column;
+  justify-content: space-between;
+  align-items    : center;
+}
+
+@media screen and (max-width: 1230px) {
+  .search-result-repo-card-content {
+    width: 90%;
+  }
+}
+
+.search-result-repo-card-owner-login a {
+  color          : var(--link-color);
+  text-decoration: none;
+}
+
+.search-result-repo-card-owner-login a:hover {
+  color          : #619de2;
+  cursor         : pointer;
+  text-decoration: underline;
+}
+
+.search-result-repos-container {
+  display        : flex;
+  justify-content: space-between;
+  align-items    : stretch;
+  margin         : 0.5em 0px;
+}
+
+@media screen and (max-width: 1230px) {
+  .search-result-repos-container {
+    flex-direction: column;
+    align-items   : center;
+    width         : 100%;
+  }
+}

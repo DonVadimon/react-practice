@@ -4,10 +4,11 @@ import SearchPage from "./SearchPage";
 import SearchResult from "./SearchResult";
 import BackButton from "../BackButton";
 import "../../assets/css/GitSearch/GitSearch.css";
+import GitUserPage from "./GitUserPage";
 
 export const GitSearch: React.FC = () => {
-  const { path } = useRouteMatch();
-
+  let { path } = useRouteMatch();
+  path = path.charAt(path.length - 1) === "/" ? path.slice(0, -1) : path;
   return (
     <>
       <div className="search-main-container">
@@ -16,7 +17,14 @@ export const GitSearch: React.FC = () => {
             <SearchPage />
           </Route>
           <Route path={`${path}/result`}>
-            <SearchResult />
+            <Switch>
+              <Route exact path={`${path}/result`}>
+                <SearchResult />
+              </Route>
+              <Route path={`${path}/result/:login`}>
+                <GitUserPage />
+              </Route>
+            </Switch>
           </Route>
         </Switch>
       </div>

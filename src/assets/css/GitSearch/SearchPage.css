@@ -9,6 +9,16 @@
   width: 50%;
 }
 
+@media screen and (max-width: 1100px) {
+  .search-form {
+    width: 60%;
+  }
+
+  .search-form:focus-within {
+    width: 80%;
+  }
+}
+
 .input-btn-wrapper {
   width          : 100%;
   display        : flex;
@@ -29,6 +39,13 @@
   transition   : 300ms;
 }
 
+@media screen and (max-width: 700px) {
+  .search-input {
+    font-size: 1em;
+    padding  : 10px;
+  }
+}
+
 .search-input:focus {
   background: var(--minor-elems-color);
   color     : var(--main-color);
@@ -42,6 +59,13 @@
   border       : 1px solid var(--success-color);
   border-radius: 0px 4px 4px 0px;
   transition   : 300ms;
+}
+
+@media screen and (max-width: 700px) {
+  .search-btn {
+    font-size: 1em;
+    padding  : 10px;
+  }
 }
 
 .search-btn:hover {
