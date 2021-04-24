@@ -1,0 +1,21 @@
+@import "./variables.css";
+
+.search-result-container {
+  min-height    : 100vh;
+  width         : 80%;
+  display       : flex;
+  flex-direction: column;
+  color         : white;
+}
+
+.search-result-cards-container {
+  display        : flex;
+  justify-content: flex-start;
+  align-items    : center;
+  flex-direction : column;
+}
+
+.search-result-header {
+  width     : 100%;
+  text-align: center;
+}

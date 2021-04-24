@@ -1,0 +1,10 @@
+@import "./variables.css";
+
+.not-found-msg {
+  color     : white;
+  text-align: center;
+}
+
+.not-found-msg a {
+  color: var(--link-color);
+}

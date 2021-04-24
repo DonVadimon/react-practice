@@ -1,0 +1,79 @@
+@import "./variables.css";
+
+@keyframes fade {
+  0% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.search-suggestion {
+  width          : 100%;
+  height         : 80px;
+  margin-top     : 0.5em;
+  border         : 1px solid var(--minor-elems-color);
+  border-radius  : 4px;
+  display        : flex;
+  justify-content: space-between;
+  height         : auto;
+  align-items    : center;
+  box-sizing     : border-box;
+  animation      : fade 0.9s normal;
+}
+
+@media screen and (max-width: 700px) {
+  .search-suggestion {
+    height: 50px;
+  }
+}
+
+.search-login-container {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  height         : 100%;
+  width          : 100%;
+}
+
+.suggestion-login {
+  font-size: 2em;
+  margin   : 0;
+}
+
+@media screen and (max-width: 700px) {
+  .suggestion-login {
+    font-size: 1em;
+  }
+}
+
+.suggestion-avatar {
+  height: 80px;
+}
+
+
+.suggestion-avatar img {
+  height       : 80px;
+  border-radius: 4px 0px 0px 4px;
+}
+
+@media screen and (max-width: 700px) {
+
+  .suggestion-avatar,
+  .suggestion-avatar img {
+    height: 50px;
+  }
+}
+
+.search-suggestion a,
+.search-suggestion a:visited {
+  color          : var(--link-color);
+  text-decoration: none;
+  transition     : 300ms;
+}
+
+.search-suggestion a:hover {
+  color: rgb(101, 169, 236);
+}

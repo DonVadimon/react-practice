@@ -1,9 +1,11 @@
 /* eslint-disable no-nested-ternary */
 import React, { useEffect } from "react";
+import { withRouter } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../Redux/hooks";
 import { fetchEpisodes } from "../../Redux/breakingBadSlice";
 import { loaded } from "../../Redux/loaderSlice";
 import CarouselSlide from "./CarouselSlide";
+import fetchStatuses from "../../Redux/fetchStatuses";
 import Loader from "../Loader";
 
 const Carousel: React.FC = () => {
@@ -12,24 +14,27 @@ const Carousel: React.FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (episodesStatus === "idle") {
+    if (episodesStatus === fetchStatuses.idle) {
       dispatch(fetchEpisodes());
     }
-    if (episodesStatus === "succeeded" || episodesStatus === "failed") {
+    if (
+      episodesStatus === fetchStatuses.succeeded ||
+      episodesStatus === fetchStatuses.failed
+    ) {
       dispatch(loaded());
     }
   }, [episodesStatus, dispatch]);
 
   return (
     <div>
-      {episodesStatus === "failed" ? (
+      {episodesStatus === fetchStatuses.failed ? (
         <div>
           <h1 style={{ width: "100%", textAlign: "center" }}>
             Something went wrong
           </h1>
           {error}
         </div>
-      ) : episodesStatus === "loading" ? (
+      ) : episodesStatus === fetchStatuses.loading ? (
         <Loader />
       ) : (
         <CarouselSlide />
@@ -38,4 +43,4 @@ const Carousel: React.FC = () => {
   );
 };
 
-export default Carousel;
+export default withRouter(Carousel);
